@@ -1,0 +1,13 @@
+[Unit]
+Description=Button and LED Control Service
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/button_led_app
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: GPL-2.0
+#include "arm/broadcom/bcm2711-rpi-4-b.dts"
+
+&gpio {
+	btn_pins: btn_pins {
+		brcm,pins = <20>;
+		brcm,function = <0>;
+		brcm,pull = <2>;
+	};
+};
+
+/ {
+	my_led_dev {
+		compatible = "clean,custom-led";
+		status = "okay";
+		led-gpios = <&gpio 21 0>;
+	};
+
+	my_button_dev {
+		compatible = "clean,custom-button";
+		status = "okay";
+		pinctrl-names = "default";
+		pinctrl-0 = <&btn_pins>;
+		btn-gpios = <&gpio 20 1>;
+	};
+};

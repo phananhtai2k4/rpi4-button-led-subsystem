@@ -1,0 +1,19 @@
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index 74c592d4e..36cdd60c7 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -605,4 +605,5 @@ source "drivers/misc/cardreader/Kconfig"
+ source "drivers/misc/uacce/Kconfig"
+ source "drivers/misc/pvpanic/Kconfig"
+ source "drivers/misc/mchp_pci1xxxx/Kconfig"
++source "drivers/misc/button_led/Kconfig"
+ endmenu
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index 934917751..85bb55ae1 100644
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -70,3 +70,4 @@ obj-$(CONFIG_TMR_MANAGER)      += xilinx_tmr_manager.o
+ obj-$(CONFIG_TMR_INJECT)	+= xilinx_tmr_inject.o
+ obj-$(CONFIG_TPS6594_ESM)	+= tps6594-esm.o
+ obj-$(CONFIG_TPS6594_PFSM)	+= tps6594-pfsm.o
++obj-$(CONFIG_BUTTON_LED) += button_led/

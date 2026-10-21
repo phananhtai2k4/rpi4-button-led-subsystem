@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: GPL-2.0
+
+config BUTTON_LED
+	tristate "Button and LED Subsystem Support"
+	default y
+	help
+	  Say Y here to enable support for custom button and led drivers.
+
+config MY_CUSTOM_LED
+	tristate "Support for Pro Custom LED Driver"
+	depends on BUTTON_LED
+	default y
+	help
+	  Say Y here to include the custom LED driver.
+
+config MY_CUSTOM_BUTTON
+	tristate "Support for Pro Custom Button Driver"
+	depends on BUTTON_LED
+	default y
+	help
+	  Say Y here to include the custom Button driver.
