@@ -1,8 +1,8 @@
-# Hệ Thống Điều Khiển Nút Bấm & LED trên Raspberry Pi 4 Model B
+# Hệ Thống Điều Khiển Nút Bấm & LED trên Raspberry Pi 4
 
 Dự án Lập trình Nhúng Linux xây dựng hệ thống điều khiển **Nút Bấm và LED** hoàn chỉnh trên nền tảng **Raspberry Pi 4 Model B (ARM64)**.
 
-Thay vì điều khiển GPIO đơn giản từ Userspace Polling qua sysfs/libgpiod, dự án này triển khai theo 3 tầng:
+Dự án này triển khai theo 3 tầng:
 1. **Tầng Kernel Space:** Trực tiếp viết Platform Driver độc lập, tích hợp vào Device Tree, xử lý Hardware Interrupts, cơ chế Non-blocking/Sleep bằng Wait Queue và nhúng thẳng vào nhân Linux (Built-in Driver).
 2. **Tầng Middleware:** Đóng gói thành các share lib (`libled.so`, `libbutton.so`) để trừu tượng hóa phần cứng.
 3. **Tầng Userspace:** Ứng dụng điều khiển đa luồng xử lý logic bấm nhả / bấm giữ và được cấu hình chạy tự động lúc khởi động bằng `systemd`.
