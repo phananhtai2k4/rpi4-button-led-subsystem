@@ -4,7 +4,7 @@ Dự án Lập trình Nhúng Linux xây dựng hệ thống điều khiển **N�
 
 Dự án này triển khai theo 3 tầng:
 1. **Tầng Kernel Space:** Trực tiếp viết Platform Driver độc lập, tích hợp vào Device Tree, xử lý Hardware Interrupts, cơ chế Non-blocking/Sleep bằng Wait Queue và nhúng thẳng vào nhân Linux (Built-in Driver).
-2. **Tầng Middleware:** Đóng gói thành các share lib (`libled.so`, `libbutton.so`) để trừu tượng hóa phần cứng.
+2. **Tầng Middleware:** Đóng gói thành các shared library (`libled.so`, `libbutton.so`) để trừu tượng hóa phần cứng.
 3. **Tầng Userspace:** Ứng dụng điều khiển đa luồng xử lý logic bấm nhả / bấm giữ và được cấu hình chạy tự động lúc khởi động bằng `systemd`.
 
 ---
@@ -21,7 +21,7 @@ Dự án này triển khai theo 3 tầng:
 
 ## ✨ Các Kỹ Thuật Nổi Bật Đã Ứng Dụng
 
-### 1. Tầng Kernel Space & BSP
+### 1. Tầng Kernel Space
 - **GPIO Descriptor Subsystem:** Sử dụng API người tiêu dùng mới nhất (`devm_gpiod_get()`) thay cho API số nguyên cũ đã lỗi thời.
 - **Device Tree & Pin Control:** Tạo mới các node phần cứng độc lập (`clean,custom-led` và `clean,custom-button`), cấu hình Kéo trở lên thông qua `pinctrl` trên file gốc `bcm2711-rpi-4-b.dts`.
 - **Ngắt phần cứng (Hardware IRQ):** Bắt chính xác sự kiện thay đổi trạng thái chân bằng ngắt sườn (`IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING`) với hàm `devm_request_threaded_irq()`.
@@ -29,7 +29,7 @@ Dự án này triển khai theo 3 tầng:
 - **Nhúng thẳng Driver vào Kernel (Built-in Driver):** Tích hợp vào hệ thống Kconfig và Kbuild (`CONFIG_BUTTON_LED=y`), dịch thẳng vào file nhân `Image` (không cần dùng module rời `.ko`).
 
 ### 2. Tầng Middleware / Shared Libraries
-- Độc lập và module hóa chức năng bằng thư viện chia sẻ liên kết động (`.so`).
+- Độc lập và module hóa chức năng bằng shared library (`.so`).
 - **`libled`:** Cung cấp bộ API điều khiển LED rõ ràng: `led_init()`, `led_set()`, `led_toggle()`, `led_close()`.
 - **`libbutton`:** Đọc dữ liệu từ tầng Kernel (`'P'` - Bấm, `'R'` - Nhả), tính toán khoảng thời gian bấm (`CLOCK_MONOTONIC`), chống rung phím (Debounce) và phát ra các sự kiện cấp cao thông qua con trỏ hàm Callback.
 
