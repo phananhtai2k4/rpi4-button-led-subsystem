@@ -14,7 +14,7 @@
 #define CLASS_NAME  "my_button_class"
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Embedded Linux Engineer");
+MODULE_AUTHOR("phananhtai2004yt@gmail.com");
 MODULE_DESCRIPTION("Standalone Button Platform Driver with Blocking Read");
 
 struct button_dev_data {
