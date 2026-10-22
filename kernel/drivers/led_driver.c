@@ -11,7 +11,7 @@
 #define CLASS_NAME "my_led_class"
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Embedded Linux Engineer");
+MODULE_AUTHOR("phananhtai2004yt@gmail.com");
 MODULE_DESCRIPTION("Standalone LED Platform Driver");
 
 struct led_dev_data {
