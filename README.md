@@ -1,4 +1,4 @@
-# Hệ Thống Điều Khiển Nút Bấm & LED trên Raspberry Pi 4
+# Linux Platform Driver & Peripheral Subsystem on Raspberry Pi 4
 
 Dự án Lập trình Nhúng Linux xây dựng hệ thống điều khiển **Nút Bấm và LED** hoàn chỉnh trên nền tảng **Raspberry Pi 4 Model B (ARM64)**.
 
